@@ -1,3 +1,10 @@
-.venv
+
+__pycache__/
+Include/
+Lib/
+Scripts/
 .env
-__pycache__
+*.txt
+pyvenv.cfg
+*.pyc
+

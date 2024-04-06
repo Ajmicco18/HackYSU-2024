@@ -1,39 +1,17 @@
-import { Button, Text } from '@chakra-ui/react'
+import { useState, useEffect } from 'react';
+import { Button, Text, Card, CardHeader, CardBody, CardFooter, Box } from '@chakra-ui/react'
 import Navbar from './Components/Navbar';
-import React, { useEffect, useState } from "react"
+import BetsList from './pages/BetsList';
 
-export default function App() {
+const App = () => {
 
-  const [data, setData] = useState(null)
-
-  useEffect(() => {
-    fetchData()
-  }, []);
-
-  async function fetchData() {
-    const response = await fetch('http://127.0.0.1:8000/bets');
-    const newData = await response.json();
-    setData(newData)
-  }
 
   return (
-    <>
-      <div>
-        {
-          data?.map((item) => {
-            return (
-              <div>
-                {item.gametime}
-                {item.hometeam}
-                {item.awayteam}
-              </div>
-            )
-          })
-        }
-        <Navbar />
-        < Text fontSize='5xl' > HackYSU2024</Text>
-        <Button colorScheme='blue' /*</div>onClick={queryDatabase}*/>Test</Button>
-      </div>
-    </>
+    <div>
+      <Navbar />
+      <BetsList />
+    </div>
   )
 }
+
+export default App
