@@ -45,3 +45,4 @@ typing-extensions==4.8.0
     #   pydantic-core
 uvicorn==0.28.0
     # via -r requirements.in
+python-dotenv == 1.0.1
