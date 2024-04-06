@@ -1,6 +1,7 @@
 import { Button, Text } from '@chakra-ui/react'
 import Navbar from './Components/Navbar';
 import LandingPage from './Components/LandingPage';
+import Footer from './Components/Footer';
 const queryDatabase = async () => {
   //query database?
   try{
@@ -23,6 +24,7 @@ const App = () => {
   <div>
     <Navbar />
     <LandingPage />
+    <Footer />
     {/* <Text fontSize='5xl'>HackYSU2024</Text> */}
     {/* <Button colorScheme='blue' onClick={queryDatabase}>Test</Button> */}
   </div>
