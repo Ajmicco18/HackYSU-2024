@@ -3,6 +3,7 @@ import urllib.request
 from bs4 import BeautifulSoup
 from bs4 import SoupStrainer
 from Hackbook import Hackbook
+import json
     
 def getdata(url): 
     r = requests.get(url) 
@@ -10,23 +11,6 @@ def getdata(url):
 def DayFinder(s):
     if (s != "Spread" and s != "Total" and s!= "Moneyline"):
         return s
-#Beautiful Soup Timezone is Off by 4 Hours
-def TimeFix(time):
-    if len(time) == 6:
-        time = '0'+time
-    parse_int = int(time[0:2])
-    parse_mm = time[5:7]
-    parse_min = time[3:5]
-    new_int = parse_int - 4
-    if new_int < 0:
-        new_int = new_int + 12
-        if parse_mm == 'AM':
-            parse_mm = 'PM'
-        else:
-            parse_mm = 'AM'
-    FixTime = str(new_int) + parse_min + parse_mm
-    return(FixTime)
-
 
 HomeTeams = []
 VisitorTeams = []
@@ -61,9 +45,6 @@ for d in Dates:
     Gambling_Days.append(d[0:5])
     Times.append(d[6:])
 
-#Trim Excess Site Material
-Gambling_Days = Gambling_Days[0:-1]
-Times = Times[0:-1]
 
 Matches = []
 for x in range(0, len(HomeTeams)):
@@ -74,12 +55,31 @@ MoneyPairs = []
 for y in range(0, len(MoneyLines)-1):
     if y%2 == 0:
         MoneyPairs.append(MoneyLines[y] + " VS " + MoneyLines[y+1])
-Hackbook_Catalogue = []
 
+Hackbook_Catalogue = []
 for x in range(0, len(Gambling_Days)):
-    new_Hackbook = Hackbook(Gambling_Days[x], Times[x], HomeTeams[x], VisitorTeams[x], MoneyLines[x*2], MoneyLines[x*2+1])
+    new_Hackbook = Hackbook(Gambling_Days[x], Times[x], HomeTeams[x], VisitorTeams[x], MoneyLines[x*2], MoneyLines[x*2+1], "MyBookie")
     new_Hackbook.TimeFix(2)
     Hackbook_Catalogue.append(new_Hackbook)
-for y in Hackbook_Catalogue:
-    y.display()
-    print("\n")
+
+
+JSON_Catalogue = []
+for hb in Hackbook_Catalogue:
+    #Write Hackbook Information to Dictionary
+    new_dictionary = {"GameDay": hb.date, "GameTime": hb.time, "HomeTeam": hb.home_team, "VisitorTeam": hb.visitor_team,
+        "MoneyLine1": hb.m1, "MoneyLine2": hb.m2, "Website": hb.website}
+    print(new_dictionary)
+    #Serialize the JSON
+    json_object = json.dumps(new_dictionary, indent = 4)
+    JSON_Catalogue.append(json_object)
+
+#Write to a Sample Json Output File
+with open("MyBookie_sample.json", "w") as output_file:
+    output_file.write("[\n")
+    for j in range(0, len(JSON_Catalogue)):
+        if (j == len(JSON_Catalogue)-1):
+            output_file.write(JSON_Catalogue[j] +"\n")
+        else:
+            output_file.write(JSON_Catalogue[j] +",\n")
+    output_file.write("]")
+    output_file.close()
