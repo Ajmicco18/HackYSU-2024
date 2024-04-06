@@ -5,3 +5,4 @@ Scripts/
 .env
 *.txt
 pyvenv.cfg
+*.pyc
