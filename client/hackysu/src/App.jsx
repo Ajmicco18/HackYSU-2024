@@ -1,5 +1,5 @@
 import { Button, Text } from '@chakra-ui/react'
-
+import Navbar from './Components/Navbar';
 const queryDatabase = async () => {
   //query database?
   try{
@@ -20,8 +20,9 @@ const App = () => {
 
   return(
   <div>
-    <Text fontSize='5xl'>HackYSU2024</Text>
-    <Button colorScheme='blue' onClick={queryDatabase}>Test</Button>
+    <Navbar />
+    {/* <Text fontSize='5xl'>HackYSU2024</Text> */}
+    {/* <Button colorScheme='blue' onClick={queryDatabase}>Test</Button> */}
   </div>
   )
 }
