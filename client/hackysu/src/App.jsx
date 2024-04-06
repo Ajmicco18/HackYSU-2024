@@ -1,30 +1,39 @@
 import { Button, Text } from '@chakra-ui/react'
 import Navbar from './Components/Navbar';
-const queryDatabase = async () => {
-  //query database?
-  try{
-    const res = await fetch('http://127.0.0.1:8000/bets/');
-    if(!res.ok){
-      throw new Error('Failed to fetch data');
-    }
-    const data = await res.json();
-    console.log(data)
+import React, { useEffect, useState } from "react"
+
+export default function App() {
+
+  const [data, setData] = useState(null)
+
+  useEffect(() => {
+    fetchData()
+  }, []);
+
+  async function fetchData() {
+    const response = await fetch('http://127.0.0.1:8000/bets');
+    const newData = await response.json();
+    setData(newData)
   }
-  catch(error){
-    console.error('error fetching data: ', error);
-  }
-}
 
-const App = () => {
-
-
-  return(
-  <div>
-    <Navbar />
-    {/* <Text fontSize='5xl'>HackYSU2024</Text> */}
-    {/* <Button colorScheme='blue' onClick={queryDatabase}>Test</Button> */}
-  </div>
+  return (
+    <>
+      <div>
+        {
+          data?.map((item) => {
+            return (
+              <div>
+                {item.gametime}
+                {item.hometeam}
+                {item.awayteam}
+              </div>
+            )
+          })
+        }
+        <Navbar />
+        < Text fontSize='5xl' > HackYSU2024</Text>
+        <Button colorScheme='blue' /*</div>onClick={queryDatabase}*/>Test</Button>
+      </div>
+    </>
   )
 }
-
-export default App
