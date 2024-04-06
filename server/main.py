@@ -1,10 +1,25 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from getMongoDB import get_database
 
 app = FastAPI()
 
+origins = [
+    "http://localhost",
+    "http://localhost:5173"
+]
+
+app.add_middleware(
+    CORSMiddleware, #allows cross origin requests from specific origins (domains) to access your server's resources.
+    allow_origins=origins, #list of allowed (above)
+    allow_credentials=True, #authorization, cookies, etc
+    allow_methods=["*"], #specific http methods etc
+    allow_headers=["*"], #http headers
+)
+
 if app:
     hydb = get_database()
+
 
 
 #handles get requests that go to path '/'
