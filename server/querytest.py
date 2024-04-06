@@ -1,8 +1,7 @@
 from getMongoDB import get_database
-hy = get_database()
+hydb = get_database()
 
-cn = hy['test_items']
-
-items = cn.find({"testTestTest" : 2024})
-for item in items:
-    print(item)
+coll = hydb['test_items']
+items = coll.find()
+bets = [x for x in items]
+print(type(bets))
