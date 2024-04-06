@@ -18,22 +18,21 @@ export default function App() {
 
   return (
     <>
+      <Navbar />
       <div>
         {
           data?.map((item) => {
             return (
               <div>
-                {item.gametime}
-                {item.hometeam}
-                {item.awayteam}
+                {item.gametime}<br />
+                {item.hometeam}<br />
+                {item.awayteam}<br />
               </div>
             )
           })
         }
-        <Navbar />
-        < Text fontSize='5xl' > HackYSU2024</Text>
-        <Button colorScheme='blue' /*</div>onClick={queryDatabase}*/>Test</Button>
       </div>
+
     </>
   )
 }
