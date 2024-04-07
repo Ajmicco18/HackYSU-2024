@@ -10,6 +10,7 @@ const Navbar = () => {
       padding="1rem"
       bg="blue.900"
       color="gold"
+      fontFamily="Helvetica" // Setting the font family to Helvetica
       position="sticky"
       top="0"
       zIndex="999" // Adjust z-index as needed

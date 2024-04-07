@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Box, Heading, Text, Button } from '@chakra-ui/react';
+import { Flex, Box, Heading, Text, Button, Image } from '@chakra-ui/react';
 
 const LandingPage = () => {
   return (
@@ -11,10 +11,11 @@ const LandingPage = () => {
       bg="#7B0323"
       color="white"
     >
-      <Heading as="h1" size="2xl" mb="4" color ="gold">
+      <Image src="Subject.png" alt="Welcome Image" boxSize="400px" maxW="18%" />
+      <Heading as="h1" size="2xl" mb="4" color="gold">
         Welcome to Our Website
       </Heading>
-      <Text fontSize="xl" mb="8" color = "blue.400">
+      <Text fontSize="xl" mb="8" color="blue.400">
         Discover the amazing features we offer!
       </Text>
       <Box>

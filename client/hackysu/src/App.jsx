@@ -3,7 +3,8 @@ import { Button, Text, Card, CardHeader, CardBody, CardFooter, Box } from '@chak
 import Navbar from './Components/Navbar';
 import LandingPage from './Components/LandingPage';
 import Footer from './Components/Footer';
-import BetsList from './pages/BetsList';
+import BetsList from './Components/BetsList';
+
 
 const App = () => {
 
@@ -11,10 +12,12 @@ const App = () => {
 
   return(
   <div>
+    <React>
     <Navbar />
     <LandingPage />
      <BetsList />
     <Footer />
+    </React>
   </div>
   )
 }
