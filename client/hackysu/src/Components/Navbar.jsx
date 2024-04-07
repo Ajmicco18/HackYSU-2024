@@ -15,19 +15,32 @@ const Navbar = () => {
       zIndex="999" // Adjust z-index as needed
     >
       <Box maxW="33px">
-        <Image src="Subject.png" alt="Logo" boxSize="50px" /> 
+        <a href="\">
+          <Image src="Subject.png" alt="Logo" boxSize="50px" />
+        </a>
+
       </Box>
       <Box>
-        <Button variant="link" mr="4" color="gold">
-          Home
-        </Button>
-        <Button variant="link" mr="4" color="gold">
-          About
-        </Button>
-        <Button variant="link" mr="4" color="gold">
-          Services
-        </Button>
-        <Button variant="link" color="gold">Contact</Button>
+        <a href="/">
+          <Button variant="link" mr="4" color="gold">
+            Home
+          </Button>
+        </a>
+        <a href="/AboutPage">
+          <Button variant="link" mr="4" color="gold">
+            About
+          </Button>
+        </a>
+        <a href="\ServicesPage">
+          <Button variant="link" mr="4" color="gold">
+            Services
+          </Button>
+        </a>
+        <a href="\Contacts">
+          <Button variant="link" color="gold">
+            Contact
+          </Button>
+        </a>
       </Box>
     </Flex>
   );
