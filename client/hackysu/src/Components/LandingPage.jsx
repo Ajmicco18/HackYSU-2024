@@ -11,10 +11,10 @@ const LandingPage = () => {
       bg="#7B0323"
       color="white"
     >
-      <Heading as="h1" size="2xl" mb="4" color ="gold">
+      <Heading as="h1" size="2xl" mb="4" color="gold">
         Welcome to Our Website
       </Heading>
-      <Text fontSize="xl" mb="8" color = "blue.400">
+      <Text fontSize="xl" mb="8" color="blue.400">
         Discover the amazing features we offer!
       </Text>
       <Box>
