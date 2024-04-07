@@ -12,7 +12,7 @@ origins = [
 app.add_middleware(
     # allows cross origin requests from specific origins (domains) to access your server's resources.
     CORSMiddleware,
-    allow_origins=origins,  # list of allowed (above)
+    allow_origins=["*"],  # list of allowed (above)
     allow_credentials=True,  # authorization, cookies, etc
     allow_methods=["*"],  # specific http methods etc
     allow_headers=["*"],  # http headers
