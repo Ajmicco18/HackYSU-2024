@@ -1,25 +1,43 @@
-//import { useState, useEffect } from 'react';
-//import { Button, Text, Card, CardHeader, CardBody, CardFooter, Box } from '@chakra-ui/react'
-import { Box } from '@chakra-ui/react'
-import BetCard from './Components/BetCard';
-import Navbar from './Components/Navbar';
-import LandingPage from './Components/LandingPage';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate
+} from 'react-router-dom';
 import Footer from './Components/Footer';
-import BetsList from './Components/BetsList';
+import Home from './Components/Pages/Home';
+import AboutPage from './Components/Pages/AboutPage';
+import Navbar from './Components/Navbar';
+import ServicesPage from './Components/Pages/ServicesPage';
+import Contacts from './Components/Pages/Contacts';
 
-const App = () => {
 
+function App() {
 
-
-  return(
-  <div>
-    <Navbar />
-    <LandingPage />
-      <Box maxW={'80vw'} margin={'auto'}>
-        <BetsList />
-      </Box>
-    <Footer />
-  </div>
+  return (
+    <>
+      <Navbar />
+      <Router>
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={<Home />} />
+          <Route
+            exact
+            path="/AboutPage"
+            element={<AboutPage />} />
+          <Route
+            exact
+            path="/Services"
+            element={<ServicesPage />} />
+          <Route
+            exact
+            path="/Contact"
+            element={<Contacts />} />
+        </Routes>
+      </Router>
+      <Footer /></>
   )
 }
 
