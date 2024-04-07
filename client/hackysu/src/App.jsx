@@ -4,7 +4,7 @@ import {
   Route,
   Navigate
 } from 'react-router-dom';
-import Footer from './Components/Footer';
+import "./App.css"
 import Home from './Components/Pages/Home';
 import AboutPage from './Components/Pages/AboutPage';
 import Navbar from './Components/Navbar';
@@ -37,7 +37,10 @@ function App() {
             element={<Contacts />} />
         </Routes>
       </Router>
-      <Footer /></>
+      <footer>
+        &copy; {new Date().getFullYear()} LeGamble. All rights reserved.
+      </footer >
+    </>
   )
 }
 
